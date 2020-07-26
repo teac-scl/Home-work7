@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      Night Club
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <script>
+      var name = prompt("Ваше ім'я");
+      var city = prompt("Введіть місто");
+      var age = parseInt(prompt("Ваш вік"));
+      var name_En_Ua = name.match(/^[a-zA-Zа-яА-ЯЄєЇї]+$/);
+      var city_En_Ua = city.match(/^[a-zA-Zа-яА-ЯЄєЇї]+$/);
+      console.log(name_En_Ua);
+      console.log(city_En_Ua, typeof city_En_Ua);
+      var validate = true;
+      if (
+        !name ||
+        !city ||
+        !age ||
+        Number.isNaN(age) ||
+        name_En_Ua == null ||
+        city_En_Ua == null
+      ) {
+        alert("Некоректно введені дані");
+        validate = false;
+      }
+
+      if (Number.isNaN(age)) {
+        alert("Вік має записаний бути цифрами");
+        validate = false;
+      }
+
+      if (name_En_Ua == null) {
+        validate = false;
+        alert(
+          "Некоректно введене ім'я (мають бути символи: [A-z] або [А-я] ) "
+        );
+      }
+
+      if (city_En_Ua == null) {
+        validate = false;
+        alert(
+          "Некоректно введене місто (мають бути символи: [A-z] або [А-я]) "
+        );
+      }
+      if (!name) {
+        alert("Некоректне імя");
+        validate = false;
+      }
+      if (!city) {
+        alert("Некоректна назва міста");
+        validate = false;
+      }
+      if (!age) {
+        alert("Некоректне значення віку");
+        validate = false;
+      }
+
+      if (validate) {
+        if (confirm("Ви хочете пройти до клубу?")) {
+          var result;
+          if (age < 18)
+            result = `Управління поліції міста ${city} особа ${name} молодша 18 років намагалася потрапити в заклад`;
+          else if (age < 21) result = `Недостатній вік для входу до клубу`;
+          else if (age >= 21 && age < 45)
+            result = `Ласкаво просимо до клубу в місті ${city}. Танці та коктейлі до ранку!`;
+          else result = `Ваш вік занадто великий для відвідування цього клубу`;
+        }
+        alert(result);
+      } else
+        alert("Перепрошую, Ваші дані не дають можливість Вас ідентифікувати");
+    </script>
+    Тут був скрипт...
+  </body>
+</html>
